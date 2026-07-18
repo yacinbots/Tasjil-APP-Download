@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tasjil APP - تحميل التطبيق</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #12122a;
+            --bg-card: rgba(255,255,255,0.03);
+            --bg-card-hover: rgba(255,255,255,0.06);
+            --border-color: rgba(255,255,255,0.06);
+            --text-primary: #fff;
+            --text-secondary: rgba(255,255,255,0.6);
+            --text-muted: rgba(255,255,255,0.3);
+            --gradient-start: #F7D44A;
+            --gradient-end: #F5A623;
+            --shadow-color: rgba(247, 212, 74, 0.3);
+            --logo-bg: linear-gradient(135deg, #F7D44A, #F5A623);
+            --input-bg: rgba(255,255,255,0.05);
+            --scrollbar: #F7D44A;
+            --btn-shadow: rgba(247, 212, 74, 0.4);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(0,0,0,0.03);
+            --bg-card-hover: rgba(0,0,0,0.06);
+            --border-color: rgba(0,0,0,0.08);
+            --text-primary: #1a1a2e;
+            --text-secondary: rgba(0,0,0,0.6);
+            --text-muted: rgba(0,0,0,0.3);
+            --input-bg: rgba(0,0,0,0.05);
+        }
+
+        body {
+            font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .top-banner {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 8px 15px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #1a1a2e;
+            border-bottom: none;
+            font-weight: 600;
+        }
+
+        .top-banner strong {
+            color: #1a1a2e;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 15px 40px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0 25px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: var(--logo-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #1a1a2e;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 2px solid rgba(247, 212, 74, 0.3);
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+
+        .app-info {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .app-info h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .app-info .version {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .app-info .version span {
+            color: var(--gradient-start);
+            -webkit-text-fill-color: var(--gradient-start);
+        }
+
+        .app-info .date {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: #1a1a2e;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px var(--btn-shadow);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-30%) translateY(-30%); }
+            50% { transform: translateX(30%) translateY(30%); }
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px var(--btn-shadow);
+        }
+
+        .download-btn:active {
+            transform: scale(0.95);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        .screenshots-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .screenshots-section h3 {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .screenshots-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            aspect-ratio: 9/16;
+            max-height: 500px;
+            background: rgba(0,0,0,0.3);
+            touch-action: none;
+            user-select: none;
+        }
+
+        .screenshots-slider .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            will-change: transform;
+        }
+
+        .screenshots-slider .slider-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 16px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .slider-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dots span.active {
+            background: var(--gradient-start);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .features-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--gradient-start);
+            transform: translateY(-2px);
+        }
+
+        .feature-card .icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .feature-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 3px;
+        }
+
+        .feature-card p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .feature-card .badge {
+            display: inline-block;
+            background: rgba(247, 212, 74, 0.2);
+            color: var(--gradient-start);
+            font-size: 0.55rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .reviews-section {
+            margin-top: 30px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .reviews-section h3 {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .review-form .row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            width: 100%;
+            font-family: inherit;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .review-form input:focus,
+        .review-form textarea:focus {
+            outline: none;
+            border-color: var(--gradient-start);
+        }
+
+        .review-form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .review-form .stars {
+            display: flex;
+            gap: 8px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            direction: ltr;
+        }
+
+        .review-form .stars span {
+            transition: all 0.2s;
+            color: var(--text-muted);
+        }
+
+        .review-form .stars span.active {
+            color: #f7d44a;
+        }
+
+        .review-form .stars span:hover {
+            transform: scale(1.2);
+        }
+
+        .review-form button {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .review-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .reviews-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .reviews-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .reviews-list::-webkit-scrollbar-track {
+            background: var(--bg-card);
+        }
+
+        .reviews-list::-webkit-scrollbar-thumb {
+            background: var(--scrollbar);
+            border-radius: 2px;
+        }
+
+        .review-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .review-item .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .review-item .review-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gradient-start);
+        }
+
+        .review-item .review-stars {
+            color: #f7d44a;
+            font-size: 0.8rem;
+        }
+
+        .review-item .review-date {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+        }
+
+        .review-item .review-comment {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0 10px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            z-index: 1000;
+            animation: slideUp 0.4s ease;
+            border: 1px solid var(--border-color);
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 10px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--gradient-start);
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .app-info h1 {
+                font-size: 1.3rem;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+            
+            .screenshots-slider {
+                max-height: 350px;
+            }
+            
+            .review-form .row {
+                flex-direction: column;
+            }
+            
+            .theme-toggle {
+                top: 10px;
+                left: 10px;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.3s;
+            backdrop-filter: blur(4px);
+            display: none;
+        }
+
+        .slider-nav:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .slider-nav.prev { left: 10px; }
+        .slider-nav.next { right: 10px; }
+
+        @media (min-width: 768px) {
+            .slider-nav { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">☀️</button>
+
+    <div class="top-banner">
+        📱 <strong>تحديث جديد!</strong> الإصدار 2.0.1 متاح للتحميل
+    </div>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo" id="appLogo">
+                <img src="logo.png" alt="Tasjil APP">
+            </div>
+            <div class="app-info">
+                <h1>Tasjil APP</h1>
+                <div class="version">الإصدار <span>2.0.1</span></div>
+                <div class="date">📅 تحديث: 18 يوليو 2026</div>
+            </div>
+            <a href="https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.0.1.apk" class="download-btn" download>
+                📥 تحميل التطبيق
+            </a>
+        </div>
+
+        <div class="main-content">
+
+            <div class="screenshots-section">
+                <h3>— لقطات من التطبيق —</h3>
+                <div class="screenshots-slider" id="slider">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- سيتم إضافة الصور بواسطة JavaScript -->
+                    </div>
+                    <button class="slider-nav prev" id="prevBtn">‹</button>
+                    <button class="slider-nav next" id="nextBtn">›</button>
+                </div>
+                <div class="slider-dots" id="dots"></div>
+            </div>
+
+            <div class="features-section">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="icon">🎁</span>
+                        <h4>الهدية الأسبوعية</h4>
+                        <p>2 جيقا مجانية كل أسبوع</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">👥</span>
+                        <h4>الدعوة المجانية</h4>
+                        <p>ادعُ أصدقاءك واكسب انترنت</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">📶</span>
+                        <h4>عروض الإنترنت</h4>
+                        <p>شريحة جيزي فقط</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">📇</span>
+                        <h4>إضافة الأرقام</h4>
+                        <p>أضف كل أرقامك دون قيود</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">📊</span>
+                        <h4>الاشتراكات النشطة</h4>
+                        <p>اطلع على عروضك النشطة والحجم والوقت المتبقي</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">🔔</span>
+                        <h4>إشعارات ذكية</h4>
+                        <p>تنبيه بمرور أسبوع وجاهزية تفعيل 2 جيقا</p>
+                        <p style="font-size:0.65rem;color:var(--text-muted);">تنبيه باقتراب انتهاء حجم العرض أو مدة صلاحيته</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">🔑</span>
+                        <h4>كشف كلمة سر الوايفاي</h4>
+                        <p>تنجح مع بعض الشبكات فقط</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">🏆</span>
+                        <h4>مسابقات حصرية</h4>
+                        <p>جوائز قيمة ومتجددة</p>
+                    </div>
+                    <div class="feature-card" style="grid-column: 1/-1;">
+                        <span class="icon">💬</span>
+                        <h4>دردشة جماعية وخاصة</h4>
+                        <p>تواصل مع مستخدمي التطبيق</p>
+                    </div>
+                </div>
+
+                <a href="https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.0.1.apk" class="download-btn" style="width:100%;justify-content:center;" download>
+                    📥 تحميل التطبيق الآن
+                </a>
+            </div>
+
+        </div>
+
+        <div class="reviews-section">
+            <h3>⭐ تقييم التطبيق</h3>
+
+            <div class="review-form" id="reviewForm">
+                <div class="row">
+                    <input type="text" id="reviewName" placeholder="اسمك (اختياري)" maxlength="30">
+                </div>
+                <div class="stars" id="stars">
+                    <span data-value="1">☆</span>
+                    <span data-value="2">☆</span>
+                    <span data-value="3">☆</span>
+                    <span data-value="4">☆</span>
+                    <span data-value="5">☆</span>
+                </div>
+                <textarea id="reviewComment" placeholder="شاركنا رأيك في التطبيق..."></textarea>
+                <button onclick="submitReview()">إرسال التقييم</button>
+                <div class="loading" id="reviewLoading">جاري الإرسال...</div>
+            </div>
+
+            <div class="reviews-list" id="reviewsList">
+                <!-- سيتم تحميلها بواسطة JavaScript -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Tasjil APP · جميع الحقوق محفوظة</p>
+        </div>
+
+    </div>
+
+    <script>
+        // ====== إعدادات التطبيق ======
+        const APP_CONFIG = {
+            name: 'Tasjil APP',
+            version: '2.0.1',
+            date: '18 يوليو 2026',
+            downloadUrl: 'https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.0.1.apk'
+        };
+
+        // ====== لقطات الشاشة (صور حقيقية من نفس المجلد) ======
+        const screenshots = [
+            '1.png',
+            '2.png',
+            '3.png',
+            '4.png',
+            '5.png',
+            '6.png'
+        ];
+
+        // ====== التقييمات (مخزنة في localStorage) ======
+        function loadReviews() {
+            try {
+                return JSON.parse(localStorage.getItem('appReviews')) || [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveReview(data) {
+            const reviews = loadReviews();
+            reviews.push(data);
+            localStorage.setItem('appReviews', JSON.stringify(reviews));
+        }
+
+        // ====== عرض التقييمات ======
+        function displayReviews() {
+            const reviews = loadReviews();
+            const container = document.getElementById('reviewsList');
+            
+            if (reviews.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center;color:var(--text-muted);padding:30px 0;font-size:0.85rem;">
+                        لا توجد تعليقات بعد<br>كن أول من يقيم التطبيق!
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = reviews.slice().reverse().map(r => `
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-name">${escapeHtml(r.name)}</span>
+                        <span class="review-stars">${'⭐'.repeat(r.rating)}</span>
+                        <span class="review-date">${r.date}</span>
+                    </div>
+                    <div class="review-comment">${escapeHtml(r.comment)}</div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ====== إرسال التقييم ======
+        let selectedRating = 5;
+
+        document.querySelectorAll('#stars span').forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.dataset.value);
+                document.querySelectorAll('#stars span').forEach(s => {
+                    s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating);
+                });
+            });
+            
+            if (parseInt(star.dataset.value) <= 5) {
+                star.classList.add('active');
+            }
+        });
+
+        function submitReview() {
+            const name = document.getElementById('reviewName').value.trim() || 'مستخدم';
+            const comment = document.getElementById('reviewComment').value.trim();
+            
+            if (!comment) {
+                showToast('⚠️ الرجاء كتابة تعليق');
+                return;
+            }
+
+            const loading = document.getElementById('reviewLoading');
+            loading.classList.add('show');
+
+            // محاكاة تأخير الشبكة
+            setTimeout(() => {
+                saveReview({
+                    name: name,
+                    rating: selectedRating,
+                    comment: comment,
+                    date: new Date().toLocaleString('ar-SA')
+                });
+                
+                loading.classList.remove('show');
+                showToast('✅ تم إرسال تقييمك بنجاح');
+                document.getElementById('reviewComment').value = '';
+                displayReviews();
+            }, 500);
+        }
+
+        // ====== Toast ======
+        function showToast(message) {
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // ====== السلايدر ======
+        let currentSlide = 0;
+        const track = document.getElementById('sliderTrack');
+        const dots = document.getElementById('dots');
+        let slideInterval;
+
+        function initSlider() {
+            if (!track) return;
+            
+            // إضافة الصور
+            track.innerHTML = screenshots.map(img => 
+                `<img src="${img}" alt="لقطة شاشة" draggable="false" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22500%22%3E%3Crect fill=%22%231a1a3e%22 width=%22300%22 height=%22500%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23555%22 font-size=%2220%22 font-family=%22sans-serif%22%3Eلقطة شاشة%3C/text%3E%3C/svg%3E'">`
+            ).join('');
+
+            // إضافة النقاط
+            dots.innerHTML = screenshots.map((_, i) => 
+                `<span class="${i === 0 ? 'active' : ''}" data-index="${i}"></span>`
+            ).join('');
+
+            const dotElements = dots.querySelectorAll('span');
+            
+            if (screenshots.length > 1) {
+                // تحديث النقاط
+                dotElements.forEach((dot, i) => {
+                    dot.addEventListener('click', () => {
+                        clearInterval(slideInterval);
+                        goToSlide(i);
+                        slideInterval = setInterval(nextSlide, 4000);
+                    });
+                });
+
+                // أزرار التنقل
+                document.getElementById('prevBtn')?.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    prevSlide();
+                    slideInterval = setInterval(nextSlide, 4000);
+                });
+                
+                document.getElementById('nextBtn')?.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    nextSlide();
+                    slideInterval = setInterval(nextSlide, 4000);
+                });
+
+                // بدء التشغيل التلقائي
+                slideInterval = setInterval(nextSlide, 4000);
+
+                // اللمس
+                let startX = 0;
+                let isDragging = false;
+                const slider = document.getElementById('slider');
+
+                slider.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    clearInterval(slideInterval);
+                });
+
+                slider.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    const diff = e.touches[0].clientX - startX;
+                    const width = slider.offsetWidth;
+                    const offset = -currentSlide * width + diff;
+                    track.style.transition = 'none';
+                    track.style.transform = `translateX(${offset}px)`;
+                });
+
+                slider.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    track.style.transition = '';
+                    const diff = e.changedTouches[0].clientX - startX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff < 0) nextSlide();
+                        else prevSlide();
+                    } else {
+                        goToSlide(currentSlide);
+                    }
+                    slideInterval = setInterval(nextSlide, 4000);
+                });
+            }
+
+            // تحديث عند تغيير حجم النافذة
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    goToSlide(currentSlide);
+                }, 200);
+            });
+        }
+
+        function getSlideWidth() {
+            return document.querySelector('.screenshots-slider')?.offsetWidth || 0;
+        }
+
+        function goToSlide(index) {
+            if (!track || screenshots.length === 0) return;
+            
+            if (index < 0) index = screenshots.length - 1;
+            if (index >= screenshots.length) index = 0;
+            
+            const width = getSlideWidth();
+            track.style.transform = `translateX(-${index * width}px)`;
+            
+            dots.querySelectorAll('span').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // ====== تبديل الوضع (الداكن/الفاتح) ======
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function setTheme(dark) {
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+            themeToggle.textContent = dark ? '☀️' : '🌙';
+        }
+
+        // استعادة الوضع المخزن
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme === 'dark');
+        } else {
+            setTheme(true); // الوضع الليلي افتراضي
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            setTheme(!isDark);
+        });
+
+        // ====== تهيئة الصفحة ======
+        document.addEventListener('DOMContentLoaded', () => {
+            initSlider();
+            displayReviews();
+            
+            // إرسال التقييم بالضغط على Ctrl+Enter
+            document.getElementById('reviewComment')?.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && e.ctrlKey) {
+                    submitReview();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
