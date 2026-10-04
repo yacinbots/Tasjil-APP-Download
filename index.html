@@ -315,6 +315,99 @@
             margin-top: 4px;
         }
 
+        /* ====== Changelog Section ====== */
+        .changelog-section {
+            margin-top: 30px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .changelog-section h3 {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .changelog-version-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: #1a1a2e;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 6px;
+        }
+
+        .changelog-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .changelog-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            transition: all 0.3s;
+        }
+
+        .changelog-list li:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--gradient-start);
+        }
+
+        .changelog-list li .cl-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .changelog-list li .cl-type {
+            display: inline-block;
+            font-size: 0.58rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-bottom: 3px;
+        }
+
+        .cl-type.new {
+            background: rgba(74, 222, 128, 0.15);
+            color: #4ade80;
+        }
+
+        .cl-type.fix {
+            background: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
+        }
+
+        .cl-type.improve {
+            background: rgba(96, 165, 250, 0.15);
+            color: #60a5fa;
+        }
+
+        .cl-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        /* ====== Reviews ====== */
         .reviews-section {
             margin-top: 30px;
             background: var(--bg-card);
@@ -540,25 +633,25 @@
                 text-align: center;
                 gap: 10px;
             }
-            
+
             .app-info h1 {
                 font-size: 1.3rem;
             }
-            
+
             .download-btn {
                 width: 100%;
                 justify-content: center;
                 padding: 14px 20px;
             }
-            
+
             .screenshots-slider {
                 max-height: 350px;
             }
-            
+
             .review-form .row {
                 flex-direction: column;
             }
-            
+
             .theme-toggle {
                 top: 10px;
                 left: 10px;
@@ -603,7 +696,7 @@
     <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">☀️</button>
 
     <div class="top-banner">
-        📱 <strong>تحديث جديد!</strong> الإصدار 2.0.1 متاح للتحميل
+        📱 <strong>تحديث جديد!</strong> الإصدار 2.1.0 متاح للتحميل — دعم أوريدو + ميزات جديدة
     </div>
 
     <div class="container">
@@ -614,10 +707,10 @@
             </div>
             <div class="app-info">
                 <h1>Tasjil APP</h1>
-                <div class="version">الإصدار <span>2.0.1</span></div>
-                <div class="date">📅 تحديث: 18 يوليو 2026</div>
+                <div class="version">الإصدار <span>2.1.0</span></div>
+                <div class="date">📅 تحديث: 4 أكتوبر 2026</div>
             </div>
-            <a href="https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.0.1.apk" class="download-btn" download>
+            <a href="https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.1.0.apk" class="download-btn" download>
                 📥 تحميل التطبيق
             </a>
         </div>
@@ -627,9 +720,7 @@
             <div class="screenshots-section">
                 <h3>— لقطات من التطبيق —</h3>
                 <div class="screenshots-slider" id="slider">
-                    <div class="slider-track" id="sliderTrack">
-                        <!-- سيتم إضافة الصور بواسطة JavaScript -->
-                    </div>
+                    <div class="slider-track" id="sliderTrack"></div>
                     <button class="slider-nav prev" id="prevBtn">‹</button>
                     <button class="slider-nav next" id="nextBtn">›</button>
                 </div>
@@ -640,8 +731,8 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <span class="icon">🎁</span>
-                        <h4>الهدية الأسبوعية</h4>
-                        <p>2 جيقا مجانية كل أسبوع</p>
+                        <h4>الهدية اليومية</h4>
+                        <p>احصل على بيانات مجانية يومياً</p>
                     </div>
                     <div class="feature-card">
                         <span class="icon">👥</span>
@@ -651,7 +742,7 @@
                     <div class="feature-card">
                         <span class="icon">📶</span>
                         <h4>عروض الإنترنت</h4>
-                        <p>شريحة جيزي فقط</p>
+                        <p>جيزي وأوريدو — عروض متنوعة</p>
                     </div>
                     <div class="feature-card">
                         <span class="icon">📇</span>
@@ -666,8 +757,13 @@
                     <div class="feature-card">
                         <span class="icon">🔔</span>
                         <h4>إشعارات ذكية</h4>
-                        <p>تنبيه بمرور أسبوع وجاهزية تفعيل 2 جيقا</p>
+                        <p>تنبيه بمرور يوم وجاهزية الهدية اليومية</p>
                         <p style="font-size:0.65rem;color:var(--text-muted);">تنبيه باقتراب انتهاء حجم العرض أو مدة صلاحيته</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">📸</span>
+                        <h4>تفعيل سناب يوز</h4>
+                        <p>تفعيل Snapchat You's مباشرة من التطبيق</p>
                     </div>
                     <div class="feature-card">
                         <span class="icon">🔑</span>
@@ -679,6 +775,11 @@
                         <h4>مسابقات حصرية</h4>
                         <p>جوائز قيمة ومتجددة</p>
                     </div>
+                    <div class="feature-card">
+                        <span class="icon">🔐</span>
+                        <h4>حماية ببصمة الإصبع أو الوجه</h4>
+                        <p>أمان متقدم عند فتح التطبيق</p>
+                    </div>
                     <div class="feature-card" style="grid-column: 1/-1;">
                         <span class="icon">💬</span>
                         <h4>دردشة جماعية وخاصة</h4>
@@ -686,11 +787,63 @@
                     </div>
                 </div>
 
-                <a href="https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.0.1.apk" class="download-btn" style="width:100%;justify-content:center;" download>
+                <a href="https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.1.0.apk" class="download-btn" style="width:100%;justify-content:center;" download>
                     📥 تحميل التطبيق الآن
                 </a>
             </div>
 
+        </div>
+
+        <!-- ====== قسم التحديثات الجديدة ====== -->
+        <div class="changelog-section">
+            <h3>
+                🆕 ما الجديد في هذا الإصدار؟
+                <span class="changelog-version-tag">v2.1.0</span>
+            </h3>
+            <ul class="changelog-list">
+                <li>
+                    <span class="cl-icon">📡</span>
+                    <div class="cl-content">
+                        <span class="cl-type new">جديد</span>
+                        <span>دعم شبكة أوريدو — تفعيل العروض وإدارة الرصيد لمستخدمي أوريدو</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="cl-icon">🎁</span>
+                    <div class="cl-content">
+                        <span class="cl-type new">جديد</span>
+                        <span>الهدية اليومية — احصل على بيانات مجانية كل يوم بدلاً من الأسبوعي</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="cl-icon">⚡</span>
+                    <div class="cl-content">
+                        <span class="cl-type new">جديد</span>
+                        <span>تفعيل مختلف العروض — دعم موسّع لباقات متنوعة لكلا المشغّلَين</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="cl-icon">📸</span>
+                    <div class="cl-content">
+                        <span class="cl-type new">جديد</span>
+                        <span>تفعيل سناب شات يوز (Snapchat You's) مباشرة من داخل التطبيق</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="cl-icon">🔐</span>
+                    <div class="cl-content">
+                        <span class="cl-type new">جديد</span>
+                        <span>حماية التطبيق عند الفتح ببصمة الإصبع أو التعرف على الوجه</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="cl-icon">🛠️</span>
+                    <div class="cl-content">
+                        <span class="cl-type fix">إصلاح</span>
+                        <span>إصلاح مشكلة إرسال رمز التحقق في شبكة جازي — استقرار أعلى وسرعة أكبر في الاستجابة</span>
+                    </div>
+                </li>
+            </ul>
         </div>
 
         <div class="reviews-section">
@@ -712,9 +865,7 @@
                 <div class="loading" id="reviewLoading">جاري الإرسال...</div>
             </div>
 
-            <div class="reviews-list" id="reviewsList">
-                <!-- سيتم تحميلها بواسطة JavaScript -->
-            </div>
+            <div class="reviews-list" id="reviewsList"></div>
         </div>
 
         <div class="footer">
@@ -724,25 +875,17 @@
     </div>
 
     <script>
-        // ====== إعدادات التطبيق ======
         const APP_CONFIG = {
             name: 'Tasjil APP',
-            version: '2.0.1',
-            date: '18 يوليو 2026',
-            downloadUrl: 'https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.0.1.apk'
+            version: '2.1.0',
+            date: '4 أكتوبر 2026',
+            downloadUrl: 'https://github.com/yacinbots/YACIN-HD/releases/download/Snap/Tasjil.APP_2.1.0.apk'
         };
 
-        // ====== لقطات الشاشة (صور حقيقية من نفس المجلد) ======
         const screenshots = [
-            '1.png',
-            '2.png',
-            '3.png',
-            '4.png',
-            '5.png',
-            '6.png'
+            '1.png','2.png','3.png','4.png','5.png','6.png'
         ];
 
-        // ====== التقييمات (مخزنة في localStorage) ======
         function loadReviews() {
             try {
                 return JSON.parse(localStorage.getItem('appReviews')) || [];
@@ -757,20 +900,16 @@
             localStorage.setItem('appReviews', JSON.stringify(reviews));
         }
 
-        // ====== عرض التقييمات ======
         function displayReviews() {
             const reviews = loadReviews();
             const container = document.getElementById('reviewsList');
-            
             if (reviews.length === 0) {
                 container.innerHTML = `
                     <div style="text-align:center;color:var(--text-muted);padding:30px 0;font-size:0.85rem;">
                         لا توجد تعليقات بعد<br>كن أول من يقيم التطبيق!
-                    </div>
-                `;
+                    </div>`;
                 return;
             }
-            
             container.innerHTML = reviews.slice().reverse().map(r => `
                 <div class="review-item">
                     <div class="review-header">
@@ -789,43 +928,31 @@
             return div.innerHTML;
         }
 
-        // ====== إرسال التقييم ======
         let selectedRating = 5;
 
         document.querySelectorAll('#stars span').forEach(star => {
-            star.addEventListener('click', function() {
+            star.addEventListener('click', function () {
                 selectedRating = parseInt(this.dataset.value);
                 document.querySelectorAll('#stars span').forEach(s => {
                     s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating);
                 });
             });
-            
-            if (parseInt(star.dataset.value) <= 5) {
-                star.classList.add('active');
-            }
+            if (parseInt(star.dataset.value) <= 5) star.classList.add('active');
         });
 
         function submitReview() {
             const name = document.getElementById('reviewName').value.trim() || 'مستخدم';
             const comment = document.getElementById('reviewComment').value.trim();
-            
-            if (!comment) {
-                showToast('⚠️ الرجاء كتابة تعليق');
-                return;
-            }
-
+            if (!comment) { showToast('⚠️ الرجاء كتابة تعليق'); return; }
             const loading = document.getElementById('reviewLoading');
             loading.classList.add('show');
-
-            // محاكاة تأخير الشبكة
             setTimeout(() => {
                 saveReview({
-                    name: name,
+                    name,
                     rating: selectedRating,
-                    comment: comment,
+                    comment,
                     date: new Date().toLocaleString('ar-SA')
                 });
-                
                 loading.classList.remove('show');
                 showToast('✅ تم إرسال تقييمك بنجاح');
                 document.getElementById('reviewComment').value = '';
@@ -833,11 +960,9 @@
             }, 500);
         }
 
-        // ====== Toast ======
         function showToast(message) {
             const existing = document.querySelector('.toast');
             if (existing) existing.remove();
-            
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.textContent = message;
@@ -845,7 +970,6 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // ====== السلايدر ======
         let currentSlide = 0;
         const track = document.getElementById('sliderTrack');
         const dots = document.getElementById('dots');
@@ -853,22 +977,16 @@
 
         function initSlider() {
             if (!track) return;
-            
-            // إضافة الصور
-            track.innerHTML = screenshots.map(img => 
+            track.innerHTML = screenshots.map(img =>
                 `<img src="${img}" alt="لقطة شاشة" draggable="false" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22500%22%3E%3Crect fill=%22%231a1a3e%22 width=%22300%22 height=%22500%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23555%22 font-size=%2220%22 font-family=%22sans-serif%22%3Eلقطة شاشة%3C/text%3E%3C/svg%3E'">`
             ).join('');
 
-            // إضافة النقاط
-            dots.innerHTML = screenshots.map((_, i) => 
+            dots.innerHTML = screenshots.map((_, i) =>
                 `<span class="${i === 0 ? 'active' : ''}" data-index="${i}"></span>`
             ).join('');
 
-            const dotElements = dots.querySelectorAll('span');
-            
             if (screenshots.length > 1) {
-                // تحديث النقاط
-                dotElements.forEach((dot, i) => {
+                dots.querySelectorAll('span').forEach((dot, i) => {
                     dot.addEventListener('click', () => {
                         clearInterval(slideInterval);
                         goToSlide(i);
@@ -876,25 +994,21 @@
                     });
                 });
 
-                // أزرار التنقل
                 document.getElementById('prevBtn')?.addEventListener('click', () => {
                     clearInterval(slideInterval);
                     prevSlide();
                     slideInterval = setInterval(nextSlide, 4000);
                 });
-                
+
                 document.getElementById('nextBtn')?.addEventListener('click', () => {
                     clearInterval(slideInterval);
                     nextSlide();
                     slideInterval = setInterval(nextSlide, 4000);
                 });
 
-                // بدء التشغيل التلقائي
                 slideInterval = setInterval(nextSlide, 4000);
 
-                // اللمس
-                let startX = 0;
-                let isDragging = false;
+                let startX = 0, isDragging = false;
                 const slider = document.getElementById('slider');
 
                 slider.addEventListener('touchstart', (e) => {
@@ -907,9 +1021,8 @@
                     if (!isDragging) return;
                     const diff = e.touches[0].clientX - startX;
                     const width = slider.offsetWidth;
-                    const offset = -currentSlide * width + diff;
                     track.style.transition = 'none';
-                    track.style.transform = `translateX(${offset}px)`;
+                    track.style.transform = `translateX(${-currentSlide * width + diff}px)`;
                 });
 
                 slider.addEventListener('touchend', (e) => {
@@ -917,23 +1030,16 @@
                     isDragging = false;
                     track.style.transition = '';
                     const diff = e.changedTouches[0].clientX - startX;
-                    if (Math.abs(diff) > 50) {
-                        if (diff < 0) nextSlide();
-                        else prevSlide();
-                    } else {
-                        goToSlide(currentSlide);
-                    }
+                    if (Math.abs(diff) > 50) { diff < 0 ? nextSlide() : prevSlide(); }
+                    else { goToSlide(currentSlide); }
                     slideInterval = setInterval(nextSlide, 4000);
                 });
             }
 
-            // تحديث عند تغيير حجم النافذة
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    goToSlide(currentSlide);
-                }, 200);
+                resizeTimeout = setTimeout(() => goToSlide(currentSlide), 200);
             });
         }
 
@@ -943,60 +1049,38 @@
 
         function goToSlide(index) {
             if (!track || screenshots.length === 0) return;
-            
             if (index < 0) index = screenshots.length - 1;
             if (index >= screenshots.length) index = 0;
-            
-            const width = getSlideWidth();
-            track.style.transform = `translateX(-${index * width}px)`;
-            
+            track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
             dots.querySelectorAll('span').forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
-            
             currentSlide = index;
         }
 
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
 
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
-
-        // ====== تبديل الوضع (الداكن/الفاتح) ======
         const themeToggle = document.getElementById('themeToggle');
-        
+
         function setTheme(dark) {
             document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
             localStorage.setItem('theme', dark ? 'dark' : 'light');
             themeToggle.textContent = dark ? '☀️' : '🌙';
         }
 
-        // استعادة الوضع المخزن
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setTheme(savedTheme === 'dark');
-        } else {
-            setTheme(true); // الوضع الليلي افتراضي
-        }
+        setTheme(savedTheme ? savedTheme === 'dark' : true);
 
         themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            setTheme(!isDark);
+            setTheme(document.documentElement.getAttribute('data-theme') !== 'dark');
         });
 
-        // ====== تهيئة الصفحة ======
         document.addEventListener('DOMContentLoaded', () => {
             initSlider();
             displayReviews();
-            
-            // إرسال التقييم بالضغط على Ctrl+Enter
-            document.getElementById('reviewComment')?.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && e.ctrlKey) {
-                    submitReview();
-                }
+            document.getElementById('reviewComment')?.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && e.ctrlKey) submitReview();
             });
         });
     </script>
